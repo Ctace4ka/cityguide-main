@@ -40,9 +40,9 @@
                   :key="index"
                   @click="playAudio(index)"
                 >
-                  {{ location.name }}
+                  {{ location?.name }}
                   <span class="badge badge-light badge-pill"
-                    >{{ location.distance.toFixed(2) }} км
+                    >{{ location?.distance.toFixed(2) }} км
                   </span>
                 </li>
               </ul>
@@ -61,27 +61,7 @@
 
         data: {
           locations: [
-            {
-              name: "Кимрский театр драмы и комедии",
-              audioUrl: "teatr.mp3",
-              latitude: 37.359069,
-              longitude: 56.871897,
-              distance: 0,
-            },
-            {
-              name: "Статуя сапожника",
-              audioUrl: "sapojnik.mp3",
-              latitude: 56.873497,
-              longitude: 37.35566,
-              distance: 0,
-            },
-            {
-              name: "Самолёт ту-134",
-              audioUrl: "2.mp3",
-              latitude: 56.871215,
-              longitude: 37.371672,
-              distance: 0,
-            },
+
           ],
           currentAudio: "intro.mp3",
           nearLatitude: null,
@@ -98,7 +78,7 @@
           },
 
           minDistanceObject: function () {
-            this.locations.reduce((min, current) => {
+            this.locations?.reduce((min, current) => {
               let minDistanceObject =
                 current.distance < min.distance ? current : min;
               this.nearLatitude = minDistanceObject.latitude;
@@ -108,9 +88,15 @@
           },
         },
         mounted() {
+          this.getLocations()
           navigator.geolocation.watchPosition(this.updateUserLocation);
         },
         methods: {
+          getLocations(){
+            fetch('/locations/location.json')
+            .then(response => response.json())
+            .then(locations => this.locations = locations);
+          },
           playAudio(index) {
             this.currentAudio = this.locations[index].audioUrl;
             this.$refs.autoplay = true;
