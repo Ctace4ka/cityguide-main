@@ -26,7 +26,7 @@
               <audio
                 controls
                 ref="audio"
-                autoplay="true"
+                autoplay="false"
                 muted="true"
                 id="gogogo"
               >
@@ -63,7 +63,8 @@
           locations: [
 
           ],
-          currentAudio: "intro.mp3",
+
+          currentAudio: "/mp3_fail/intro.mp3",
           nearLatitude: null,
           nearLongitude: null,
           userLatitude: null,
@@ -93,7 +94,7 @@
         },
         methods: {
           getLocations(){
-            fetch('/locations/location.json')
+            fetch('http://localhost:8000/points')
             .then(response => response.json())
             .then(locations => this.locations = locations);
           },
@@ -119,8 +120,9 @@
                 this.userLongitude
               );
               this.locations[i].distance = distance;
-              if (distance < 0.1) {
+              if (distance < 0.05) {
                 this.playAudio(i);
+                console.log(100)
               }
             }
 

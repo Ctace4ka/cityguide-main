@@ -1,29 +1,28 @@
 [
   {
     "name": "Кимрский театр драмы и комедии",
-    "audioUrl" = "teatr.mp3",
-    "/mp3_fail/" + "audioUrl",
+    "audioUrl" : "/mp3_fail/teatr.mp3",
     "latitude": 56.871897,
     "longitude": 37.359069,
     "distance": 0
   },
   {
     "name": "Статуя сапожника",
-    "audioUrl": "sapojnik.mp3",
+    "audioUrl": "/mp3_fail/sapojnik.mp3",
     "latitude": 56.873497,
     "longitude": 37.35566,
     "distance": 0
   },
   {
     "name": "Самолёт ту-134",
-    "audioUrl": "2.mp3",
+    "audioUrl": "/mp3_fail/2.mp3",
     "latitude": 56.871215,
     "longitude": 37.371672,
     "distance": 0
   },
   {
     "name": "Памятник В.И. Ленину ",
-    "audioUrl": "3.mp3",
+    "audioUrl": "/mp3_fail/3.mp3",
     "latitude": 56.872633,
     "longitude": 37.35847,
     "distance": 0
